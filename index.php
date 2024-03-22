@@ -1,6 +1,16 @@
 <?php 
     get_header(); 
 ?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var title = document.querySelector('.heading');
+        if (title) {
+            title.textContent = "Archiv tutoriálů";
+        }
+    });
+</script>
+
 <article class="content">
     <form id="sort-form" method="GET">
         <label for="sort-select">Řadit dle:</label>
@@ -32,7 +42,7 @@
             wp_reset_postdata();
         ?>
     </div>
-    <div class="paginator">
+    <div class="pagination">
         <?php
             echo paginate_links( array(
                 'total'     => $query->max_num_pages, 

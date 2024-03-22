@@ -85,3 +85,22 @@ hamburgerIcon.addEventListener("click", function (event) {
 window.addEventListener("load", function () {
   window.dispatchEvent(new Event("resize"));
 });
+
+window.addEventListener("DOMContentLoaded", function () {
+  adjustFooterPosition();
+});
+
+window.addEventListener("resize", function () {
+  adjustFooterPosition();
+});
+
+function adjustFooterPosition() {
+  var headerHeight = document.querySelector("header").offsetHeight;
+  var mainHeight = document.querySelector("main").offsetHeight;
+
+  if (mainHeight + headerHeight < window.innerHeight) {
+    document.querySelector(".actual-footer").classList.add("fixed-footer");
+  } else {
+    document.querySelector(".actual-footer").classList.remove("fixed-footer");
+  }
+}

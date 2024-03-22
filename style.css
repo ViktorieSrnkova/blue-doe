@@ -134,6 +134,11 @@ main {
   border-radius: 100%;
   aspect-ratio: 1/1;
   cursor: pointer;
+  background: var(--light-blue);
+}
+.user-profile-img {
+  width: 100%;
+  height: 100%;
 }
 .dropdown-content {
   display: none;
@@ -209,7 +214,11 @@ main {
   width: 65px;
 }
 .dark-mode-switch {
+  display: flex;
+  align-items: center;
+  padding: 5px;
   border: none;
+  border-radius: 5px;
   background: var(--light-blue);
 }
 .page-title {
@@ -230,12 +239,94 @@ main {
     contrast(104%);
 }
 
+/*kategorie*/
+.category-table {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: solid 1px var(--hover-link);
+  border-radius: 5px;
+}
+.category-table td {
+  padding: 15px 30px 10px 30px;
+  border-top: 1px solid var(--hover-link);
+}
+.first-col {
+  padding: 10px 30px 10px 30px;
+  width: 80%;
+  text-align: left;
+}
+.second-col {
+  padding: 10px 30px 10px 30px;
+  width: 20%;
+  text-align: center;
+}
+.category-items {
+  width: 100%;
+  text-decoration: none;
+}
+.category-items {
+  color: var(--lghtest-blue);
+}
+.category-items:hover {
+  color: var(--color-fg);
+}
+
+/*contact*/
+.container form {
+  padding: 30px;
+  border-radius: 5px;
+  background: var(--article_bg);
+}
+.wpcf7-form {
+  display: grid;
+  grid-template-columns: auto 1fr; /* First column takes the width of its content, second column takes remaining space */
+  grid-template-rows: repeat(3, auto) auto; /* Three rows with automatic height, last row takes remaining space */
+  grid-gap: 10px; /* Adjust as needed */
+}
+.wpcf7-form p:nth-of-type(1),
+.wpcf7-form p:nth-of-type(2),
+.wpcf7-form p:nth-of-type(3) {
+  grid-column: 1;
+}
+.wpcf7-form p:nth-of-type(4) {
+  grid-column: 2;
+  grid-row: 1 / span 3; /* Span from row 1 to row 3 */
+  align-self: center;
+  margin-left: 20px;
+}
+.wpcf7-form p:nth-of-type(5) {
+  grid-column: 1 / span 2; /* Span both columns */
+  grid-row: 4;
+}
+.wpcf7-submit {
+  width: 100%;
+  padding: 5px;
+  background: var(--midle-blue);
+  color: var(--middle-white);
+  border: none;
+  border-radius: 5px;
+}
+.wpcf7-textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+.wpcf7-form-control-wrap {
+  width: 100%;
+}
+.wpcf7-submit:hover {
+  background: var(--dark-blue);
+  color: var(--middle-white);
+  cursor: pointer;
+}
+
 /*index*/
 .container {
   margin-top: 20px;
   width: 100%;
 }
-.paginator {
+.pagination,
+.nav-links {
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -388,6 +479,13 @@ main {
   width: 100%;
 }
 .is-type-video iframe {
+  height: auto;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  aspect-ratio: 16/9;
+}
+.wp-block-video video {
   height: auto;
   width: 100%;
   border: none;
@@ -564,18 +662,14 @@ main {
   color: var(--color-fg);
 }
 .comment-awaiting-moderation {
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background: var(--light-blue);
+  font-size: small;
+  box-sizing: border-box;
 }
 .comment-meta {
-  margin: -15px 0 10px 74px;
+  margin: 5px 0 10px;
   font-size: small;
 }
 .comment-meta a {
-  color: var(--middle-white);
   text-decoration: none;
 }
 .comment p {
@@ -585,7 +679,7 @@ main {
   border-radius: 5px;
 }
 .reply {
-  margin: 5px 0 5px 0;
+  margin: 10px 0 5px 0;
 }
 .reply a {
   padding-left: 5px;
@@ -609,9 +703,36 @@ main {
 .comment-form-comment textarea {
   margin-top: 5px;
   width: 100%;
-  border-radius: 5px;
 }
-
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+  display: flex;
+  flex-direction: column;
+  gap: 5px 0;
+  padding: 0 20px 0 10px;
+  max-width: fit-content;
+  width: 100%;
+}
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+  padding-left: 5px;
+  max-width: 230px;
+  border: none;
+}
+.ender,
+.form-submit {
+  margin-left: auto;
+}
+.form-submit input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background: var(--light-blue);
+  color: var(--middle-white);
+  cursor: pointer;
+}
 /*.woocommerce*/
 .woocommerce {
   min-height: 397px;
@@ -700,6 +821,8 @@ main {
 .woocommerce-cart-form a,
 .woocommerce-orders-table__cell a,
 .woocommerce-privacy-policy-text a,
+.woocommerce-table__product-name a,
+.product-name a,
 .woocommerce-MyAccount-content a {
   color: var(--lghtest-blue);
 }
@@ -714,6 +837,8 @@ main {
 .woocommerce-loop-product__title,
 .woocommerce-orders-table__cell a:hover,
 .woocommerce-privacy-policy-text a:hover,
+.woocommerce-table__product-name a:hover,
+.product-name a:hover,
 .woocommerce-MyAccount-content a:hover {
   color: var(--color-fg);
 }
@@ -809,36 +934,6 @@ main {
   width: 100%;
   max-width: 840px;
 }
-.comment-form-author,
-.comment-form-email,
-.comment-form-url {
-  display: flex;
-  flex-direction: column;
-  gap: 5px 0;
-  padding: 0 20px 0 10px;
-  max-width: fit-content;
-  width: 100%;
-}
-.comment-form-author input,
-.comment-form-email input,
-.comment-form-url input {
-  padding-left: 5px;
-  max-width: 230px;
-  border: none;
-  border-radius: 5px;
-}
-.ender,
-.form-submit {
-  margin-left: auto;
-}
-.form-submit input {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  background: var(--light-blue);
-  color: var(--middle-white);
-  cursor: pointer;
-}
 .woocommerce-product-gallery__image {
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -862,6 +957,7 @@ main {
   overflow: auto;
   overflow-y: hidden;
   height: calc(100% - 10px);
+  padding: 10px;
 }
 .flex-control-nav.flex-control-thumbs {
   display: flex;
@@ -874,8 +970,8 @@ main {
   flex: 0 0 auto;
 }
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background: transparent;
 }
 ::-webkit-scrollbar-track {
@@ -883,11 +979,11 @@ main {
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--darkest-white);
+  background: var(--lghtest-blue);
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--lghtest-blue);
+  background: var(--light-blue);
 }
 .woocommerce span.onsale {
   background: #ec165d;
@@ -899,6 +995,10 @@ main {
   border-radius: 5px;
   aspect-ratio: 1/1;
   object-fit: cover;
+}
+.woocommerce .woocommerce-ordering {
+  padding: 5px;
+  background: none;
 }
 .woocommerce a.button {
   background: var(--buttons_bg);
@@ -919,6 +1019,7 @@ main {
   margin-top: 200px;
   padding: 0 20px;
   background: var(--article_bg);
+  box-sizing: border-box;
 }
 .added_to_cart {
   padding-left: 5px;
@@ -1002,6 +1103,13 @@ main {
   color: var(--middle-white);
   list-style-type: none;
   white-space: nowrap;
+  box-sizing: border-box;
+}
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 .actual-footer a {
   color: var(--middle-white);
@@ -1017,6 +1125,36 @@ main {
   .bottom-line-content,
   .top-line-content {
     width: 80%;
+  }
+
+  /*contact*/
+  .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .wpcf7-form p {
+    width: 100%;
+  }
+  .wpcf7-form p:nth-of-type(4) {
+    margin-left: 0;
+  }
+  .wpcf7-submit {
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background: var(--midle-blue);
+    color: var(--middle-white);
+  }
+  .wpcf7-textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .wpcf7-form-control-wrap {
+    width: 100%;
   }
 }
 
@@ -1066,6 +1204,14 @@ main {
   /*main*/
   main {
     width: 100%;
+  }
+  .content {
+    overflow-x: hidden;
+  }
+  /*contact*/
+  .wpcf7-form-control {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /*woocommerce*/
@@ -1203,12 +1349,15 @@ main {
   .search-items-b {
     display: flex;
   }
-
+  .fixed-footer {
+    position: unset;
+  }
   /*footer*/
   .actual-footer {
     display: flex;
     flex-direction: column;
     height: 100px;
+    box-sizing: border-box;
   }
 }
 
@@ -1217,12 +1366,19 @@ main {
   .woocommerce-MyAccount-navigation {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    box-sizing: border-box;
   }
   .woocommerce-MyAccount-navigation ul,
   .woocommerce-MyAccount-navigation ul li,
   .woocommerce-MyAccount-navigation ul li a {
     width: 100%;
     text-align: center;
+    margin: 30px 0 30px 0;
+  }
+  .woocommerce-MyAccount-navigation ul {
+    margin-top: 0;
   }
   .woocommerce-MyAccount-navigation ul li {
     margin-bottom: 10px;
@@ -1248,5 +1404,15 @@ main {
   }
   .post-date {
     width: 40%;
+  }
+
+  /*comments*/
+  .depth-2,
+  .depth-3 {
+    margin-left: 10px;
+  }
+  .comments-wrapper,
+  .comments {
+    padding: 0;
   }
 }

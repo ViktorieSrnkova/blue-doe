@@ -1,6 +1,7 @@
 <!DOCTYPE html>
   <html data-theme="light" lang="cs">
     <head>
+      <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <?php
         wp_head();
@@ -107,5 +108,5 @@
       </header>
       <main>
         <header class="page-title">
-          <h1 class="heading"><?php the_title();?></h1>
+          <h1 class="heading" id="main-page-title"><?php the_title();?></h1>
         </header>

@@ -52,8 +52,8 @@
     add_action( 'wp_enqueue_scripts', 'bluedoe_register_styles' );
 
     function bluedoe_register_scripts() {
-    wp_enqueue_script( 'bluedoe-main', get_template_directory_uri() . "/assets/js/main.js", array(), '1.0', true );
-    wp_localize_script( 'bluedoe-main', 'wpData', array( 'baseUrl' => esc_url( home_url() ) ) );
+        wp_enqueue_script( 'bluedoe-main', get_template_directory_uri() . "/assets/js/main.js", array(), '1.0', true );
+        wp_localize_script( 'bluedoe-main', 'wpData', array( 'baseUrl' => esc_url( home_url() ) ) );
     }
 
     add_action( 'wp_enqueue_scripts', 'bluedoe_register_scripts' );
@@ -97,7 +97,20 @@
 
     add_action( 'init', 'add_custom_role' );
 
+    function add_custom_meta_description() {
+        if ( is_single() || is_page() ) {
+            $excerpt = get_the_excerpt();
+            echo '<meta name="description" content="' . esc_attr( $excerpt ) . '">';
+        }
+    }
+    add_action( 'wp_head', 'add_custom_meta_description' );
+
+    function custom_search_filter( $query ) {
+        if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
+            $query->set( 'post_type', 'post' );
+        }
+    }
+    add_action( 'pre_get_posts', 'custom_search_filter' );
+
 ?>
-
-
 
