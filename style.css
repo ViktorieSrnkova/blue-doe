@@ -528,8 +528,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: -5px 5px 0 0;
+  margin: 5px 5px 0 0;
   width: 90%;
+  height: 194px;
   background: var(--archive_bg);
   border-radius: 5px;
 }
@@ -544,7 +545,7 @@ main {
   pointer-events: none;
 }
 .post-title a {
-  color: var(--link-color);
+  color: var(--lghtest-blue);
 }
 .post-meta {
   display: flex;
@@ -562,10 +563,11 @@ main {
 }
 .more-link {
   width: fit-content;
-  color: var(--link-color);
+  color: var(--lghtest-blue);
   margin-bottom: 5px;
   margin-right: auto;
   padding-left: 15px;
+  margin-top: 10px;
 }
 .tags-archive {
   display: flex;
@@ -585,7 +587,7 @@ main {
 }
 .more-link:hover,
 .post-title a:hover {
-  color: var(--hover-link);
+  color: var(--color-fg);
 }
 .page-numbers {
   padding: 10px;

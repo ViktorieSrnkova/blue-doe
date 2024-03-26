@@ -21,9 +21,7 @@
       </div>
       <a class="more-link" href='<?php the_permalink();?>'>Číst dál &rarr;</a>
       <div class="tags-archive">
-        <?php 
-          the_tags( '<span class="single-tag-arch"><i class="fa fa-tag"></i>', '</span><span class="single-tag-arch" ><i class="fa fa-tag"></i>', '</span>' )
-        ?>
+        
       </div>
     </div>
   </div>
