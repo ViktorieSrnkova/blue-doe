@@ -98,7 +98,7 @@ function adjustFooterPosition() {
   var headerHeight = document.querySelector("header").offsetHeight;
   var mainHeight = document.querySelector("main").offsetHeight;
 
-  if (mainHeight + headerHeight < window.innerHeight) {
+  if (mainHeight + headerHeight + 100 < window.innerHeight) {
     document.querySelector(".actual-footer").classList.add("fixed-footer");
   } else {
     document.querySelector(".actual-footer").classList.remove("fixed-footer");

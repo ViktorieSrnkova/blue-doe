@@ -59,9 +59,16 @@
               <div class="bar"></div>
             </div>
             <div class="user-drop" id="userDropdown" onclick="toggleDropdown()">
-              <button type="button">
-                <img src='<?php echo get_template_directory_uri(); ?>/assets/images/user.svg' alt="user" height="23" class="filter-w" />
-              </button>
+              <button type="button" class="user-button">
+<?php
+  if ( is_user_logged_in() ) {
+    $current_user = wp_get_current_user();
+    $avatar_url = get_avatar_url( $current_user->ID );
+    echo '<img src="' . esc_url( $avatar_url ) . '" alt="' . esc_attr( $current_user->display_name ) . ' height="40" class="gravatar" />';
+  } else {
+    echo '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/user.svg" alt="user" height="23" class="filter-w" />';
+  }
+  ?>              </button>
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg' alt="arrow" height="15" class="filter-w" />
               <div id="userDropdownContent" class="dropdown-content">
                 <?php
@@ -73,8 +80,7 @@
                       'items_wrap'      => '<ul id="" class="show">%3$s</ul>', 
                     ) );
                   } else {
-                    echo '<a href="' . esc_url( wp_login_url() ) . '">Přihlášení</a>';
-                    echo '<a href="' . esc_url( wp_registration_url() ) . '">Registrace</a>';
+                    echo '<a href="' . esc_url( wc_get_account_endpoint_url( 'dashboard' ) ) . '">Přihlášení/Registrace</a>';
                   }
                 ?>
               </div>

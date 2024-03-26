@@ -19,16 +19,17 @@
 
     add_action( 'init', 'bluedoe_menus' );
 
-    function add_username_to_menu( $items, $args ) {
-        if ( is_user_logged_in() && $args->theme_location == 'secondary' ) {
-            $current_user = wp_get_current_user();
-            $username = $current_user->user_login;
-            $items = '<li class="menu-username">' . $username . '</li>' . $items;
-        }
-        return $items;
+   function add_display_name_to_menu( $items, $args ) {
+    if ( is_user_logged_in() && $args->theme_location == 'secondary' ) {
+        $current_user = wp_get_current_user();
+        $display_name = $current_user->display_name;
+        $items = '<li class="menu-display-name">' . $display_name . '</li>' . $items;
     }
+    return $items;
+}
 
-    add_filter( 'wp_nav_menu_items', 'add_username_to_menu', 10, 2 );
+add_filter( 'wp_nav_menu_items', 'add_display_name_to_menu', 10, 2 );
+
 
     function add_logout_link_to_menu( $items, $args ) {
         if ( is_user_logged_in() && $args->theme_location == 'secondary' ) {
