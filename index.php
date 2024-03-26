@@ -12,8 +12,7 @@
 </script>
 <article class="content">
     <?php
-    $page = get_queried_object();
-    echo apply_filters('the_content', $page->post_content);
+
       if ( have_posts() ) {
           while ( have_posts() ) {
               the_post();
