@@ -704,7 +704,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  color: var(--middle-white);
+  color: var(--color-fg);
 }
 .comment-form-comment {
   display: flex;
