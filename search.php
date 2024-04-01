@@ -1,12 +1,16 @@
 <?php get_header(); ?>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var title = document.querySelector('.heading');
-        if (title) {
-            title.textContent = "Výsledky hledání";
-        }
+            var title = document.querySelector('.heading');
+            if (title) {
+               if (window.location.href.includes("en")) {
+                title.textContent = "Search results";
+              } else {
+                title.textContent = "Výsledky hledání";
+            }}
     });
 </script>
+
 
 <article class="content">
   <?php if ( have_posts() ) : ?>

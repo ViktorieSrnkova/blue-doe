@@ -87,16 +87,18 @@ add_filter( 'wp_nav_menu_items', 'add_display_name_to_menu', 10, 2 );
     add_action( 'widgets_init', 'bluedoe_widget_areas' );
 
     function add_custom_role() {
-        $subscriber_role = get_role( 'subscriber' );
-        $customer_role = get_role( 'customer' );
-        $custom_capabilities = array_merge( $subscriber_role->capabilities, $customer_role->capabilities );
-        add_role( 'custom_role', 'Subscriber and Customer', $custom_capabilities );
-        global $wp_roles;
-        $wp_roles->roles['custom_role']['name'] = 'Subscriber and Customer'; 
-        $wp_roles->role_names['custom_role'] = 'Subscriber and Customer'; 
+        if ( class_exists( 'WooCommerce' ) ) {
+            $subscriber_role = get_role( 'subscriber' );
+            $customer_role = get_role( 'customer' );
+            $custom_capabilities = array_merge( $subscriber_role->capabilities, $customer_role->capabilities );
+            add_role( 'custom_role', 'Subscriber and Customer', $custom_capabilities );
+            global $wp_roles;
+            $wp_roles->roles['custom_role']['name'] = 'Subscriber and Customer'; 
+            $wp_roles->role_names['custom_role'] = 'Subscriber and Customer'; 
+        }
     }
-
     add_action( 'init', 'add_custom_role' );
+
 
     function add_custom_meta_description() {
         if ( is_single() || is_page() ) {
@@ -112,6 +114,13 @@ add_filter( 'wp_nav_menu_items', 'add_display_name_to_menu', 10, 2 );
         }
     }
     add_action( 'pre_get_posts', 'custom_search_filter' );
+
+    function remove_star_rating_sorting( $options ) {
+    unset( $options['rating'] ); // Remove the option to sort by rating
+    return $options;
+    }
+    add_filter( 'woocommerce_catalog_orderby', 'remove_star_rating_sorting', 20 );
+
 
 ?>
 

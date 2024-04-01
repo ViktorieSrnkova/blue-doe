@@ -10,14 +10,16 @@
     <body>
       <header>
         <div class="top-line-content">
-          <a href="/wordpress">
+          <a href="<?php echo esc_url( home_url() ); ?>">
             <?php 
               if ( function_exists( 'the_custom_logo' ) ) {
                 $custom_logo_id = get_theme_mod( 'custom_logo' );
                 $logo = wp_get_attachment_image_src( $custom_logo_id );
+                if ($logo) {
+                  echo '<img src="' . esc_url( $logo[0] ) . '" alt="logo" width="120" />';
+                }
               }
             ?>
-            <img src='<?php echo $logo[0] ?>' alt="logo" width="120" />
           </a>
           <div class="hamburger-menu">
             <button
@@ -60,29 +62,44 @@
             </div>
             <div class="user-drop" id="userDropdown" onclick="toggleDropdown()">
               <button type="button" class="user-button">
-<?php
-  if ( is_user_logged_in() ) {
-    $current_user = wp_get_current_user();
-    $avatar_url = get_avatar_url( $current_user->ID );
-    echo '<img src="' . esc_url( $avatar_url ) . '" alt="' . esc_attr( $current_user->display_name ) . ' height="40" class="gravatar" />';
-  } else {
-    echo '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/user.svg" alt="user" height="23" class="filter-w" />';
-  }
-  ?>              </button>
+                  <?php
+                  if ( is_user_logged_in() ) {
+                      $current_user = wp_get_current_user();
+                      $avatar_url = get_avatar_url( $current_user->ID );
+                      echo '<img src="' . esc_url( $avatar_url ) . '" alt="' . esc_attr( $current_user->display_name ) . ' height="40" class="gravatar" />';
+                  } else {
+                      echo '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/user.svg" alt="user" height="23" class="filter-w" />';
+                  }
+                  ?>     
+              </button>
               <img src='<?php echo get_template_directory_uri(); ?>/assets/images/arrow.svg' alt="arrow" height="15" class="filter-w" />
               <div id="userDropdownContent" class="dropdown-content">
-                <?php
-                  if ( is_user_logged_in() ) {
-                    wp_nav_menu( array(
-                      'menu'            => 'secondary', 
-                      'container'       => '', 
-                      'theme_location'  => 'secondary', 
-                      'items_wrap'      => '<ul id="" class="show">%3$s</ul>', 
-                    ) );
+                  <?php        
+                  if ( class_exists( 'WooCommerce' ) ) {
+                      if ( is_user_logged_in() ) {
+                          wp_nav_menu( array(
+                              'menu'            => 'secondary', 
+                              'container'       => '', 
+                              'theme_location'  => 'secondary', 
+                              'items_wrap'      => '<ul id="" class="show">%3$s</ul>', 
+                          ) );
+                      } else {
+                           echo '<a href="' . esc_url( wc_get_account_endpoint_url( 'dashboard' ) ) . '">Přihlášení/Registrace</a>';
+                      }
                   } else {
-                    echo '<a href="' . esc_url( wc_get_account_endpoint_url( 'dashboard' ) ) . '">Přihlášení/Registrace</a>';
+                       if ( is_user_logged_in() ) {
+                              wp_nav_menu( array(
+                                'menu'            => 'secondary', 
+                                'container'       => '', 
+                                'theme_location'  => 'secondary', 
+                                'items_wrap'      => '<ul id="" class="show">%3$s</ul>', 
+                              ) );
+                            } else {
+                              echo '<a href="' . esc_url( wp_login_url() ) . '">Přihlášení</a>';
+                              echo '<a href="' . esc_url( wp_registration_url() ) . '">Registrace</a>';
+                            }
                   }
-                ?>
+                  ?>
               </div>
             </div>
           </div>
@@ -116,3 +133,4 @@
         <header class="page-title">
           <h1 class="heading" id="main-page-title"><?php the_title();?></h1>
         </header>
+       

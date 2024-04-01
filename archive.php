@@ -5,14 +5,14 @@
   if ( $current_term instanceof WP_Term ) {
       $title = ucwords( $current_term->name );
   } else {
-      $title = "Archiv tutoriálů";
+      $title = __("Archiv tutoriálů", "your-text-domain");
   }
 ?>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var title = document.querySelector('.heading');
         if ( title ) {
-            title.textContent = "<?php echo $title; ?>";
+            title.textContent = "<?php echo esc_js( apply_filters( 'weglot_translate_html_element', $title, 'title' ) ); ?>";
         }
     });
 </script>

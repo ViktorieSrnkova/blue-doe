@@ -21,7 +21,6 @@
       </div>
       <a class="more-link" href='<?php the_permalink();?>'>Číst dál &rarr;</a>
       <div class="tags-archive">
-        
       </div>
     </div>
   </div>
