@@ -133,4 +133,5 @@
         <header class="page-title">
           <h1 class="heading" id="main-page-title"><?php the_title();?></h1>
         </header>
+         <?php dynamic_sidebar( 'sidebar-1' ); ?>
        

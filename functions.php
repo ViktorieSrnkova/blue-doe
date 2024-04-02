@@ -82,6 +82,17 @@ add_filter( 'wp_nav_menu_items', 'add_display_name_to_menu', 10, 2 );
                 'description'   => 'Top Header Widget Area', 
             )
         );
+        register_sidebar(
+            array(
+                'before_title'  => '', 
+                'after_title'   => '', 
+                'before_widget' => ' <div class="sidebar">', 
+                'after_widget'  => '</div>', 
+                'name'          => 'Sidebar', 
+                'id'            => 'sidebar-1', 
+                'description'   => 'Side bar', 
+            )
+        );
     }
 
     add_action( 'widgets_init', 'bluedoe_widget_areas' );

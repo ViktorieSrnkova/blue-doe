@@ -2,7 +2,7 @@
 Theme Name: Blue Doe
 Author: Viktorie Srnková
 Description: Tato šablona je ideální pro tvorbu blogu. Šablona má pro uživatele připravený světlý a tmavý režim a je plně škálovatelná a to včetně rozhraní pro telefon. Šablonu lze také použít pro kombinaci blogu a eshopu a pro toto použití je v dashboardu vytvořena nová role kombinující odběratele a zákazníka. Příspěvky obsahují sekce komentářů pro zpětnou vazbu uživatelů. Barvy se nedají měnit. Šablona umožňuje přihlašování přez rozhraní woocommerce a bez woocommerce se dá přihlásit přez rozhraní wodpressu. Titulky archivu,vyhledávání a stránky s příspěvky jsou ručně nastaveny aby se nezobrazoval titulek prvního příspěvku. Tyto titulky jsou připraveny i na překlad pomocí weglot pluginu.
-Version:2.5
+Version:3.0
 */
 * {
   font-family: Rubik, sans-serif;
@@ -50,6 +50,12 @@ Version:2.5
 .content {
   margin: 30px 0 20px 0;
   width: 100%;
+}
+.page a {
+  color: var(--lghtest-blue);
+}
+.page a:hover {
+  color: var(--color-fg);
 }
 
 /*header*/
@@ -245,6 +251,18 @@ main {
 .filter-w {
   filter: invert(99%) sepia(79%) saturate(0%) hue-rotate(80deg) brightness(105%)
     contrast(104%);
+}
+.sidebar {
+  display: flex;
+  width: 100%;
+  padding: 20px 20px 10px 5px;
+  box-sizing: border-box;
+}
+.sidebar a {
+  color: var(--lghtest-blue);
+}
+.sidebar a:hover {
+  color: var(--color-fg);
 }
 
 /*kategorie*/
@@ -751,9 +769,6 @@ main {
 }
 /*.woocommerce*/
 
-.woocommerce {
-  min-height: 397px;
-}
 .posted_in a,
 .related,
 .tagged_as a {

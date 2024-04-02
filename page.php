@@ -2,7 +2,7 @@
 <?php
   get_header();
 ?>
-<article class="content">
+<article class="content page">
   <?php
     if ( have_posts() ){
       while ( have_posts() ) {
