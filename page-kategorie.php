@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-<article class="content">
+<article class="content page">
     <table class="category-table">
         <thead>
             <tr>

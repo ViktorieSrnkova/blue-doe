@@ -25,7 +25,7 @@
             $title = strip_tags( $headings[2][ $index ] );
             $id = sanitize_title( $title );
             $content = str_replace( $heading, '<h' . $level . ' id="' . $id . '">' . $title . '</h' . $level . '>', $content );
-            echo '<li><a href="#' . $id . '">' . $title . '</a></li>';
+            echo '<li><a class="smooth-scroll" href="#' . $id . '">' . $title . '</a></li>';
           }
         }
       ?>

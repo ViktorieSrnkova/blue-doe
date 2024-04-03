@@ -1,3 +1,4 @@
+        <button id="scrollToTopBtn" class="scroll-to-top-btn">↑</button>
         </main>
         <footer class="actual-footer">
             <?php

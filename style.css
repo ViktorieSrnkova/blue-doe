@@ -2,14 +2,14 @@
 Theme Name: Blue Doe
 Author: Viktorie Srnková
 Description: Tato šablona je ideální pro tvorbu blogu. Šablona má pro uživatele připravený světlý a tmavý režim a je plně škálovatelná a to včetně rozhraní pro telefon. Šablonu lze také použít pro kombinaci blogu a eshopu a pro toto použití je v dashboardu vytvořena nová role kombinující odběratele a zákazníka. Příspěvky obsahují sekce komentářů pro zpětnou vazbu uživatelů. Barvy se nedají měnit. Šablona umožňuje přihlašování přez rozhraní woocommerce a bez woocommerce se dá přihlásit přez rozhraní wodpressu. Titulky archivu,vyhledávání a stránky s příspěvky jsou ručně nastaveny aby se nezobrazoval titulek prvního příspěvku. Tyto titulky jsou připraveny i na překlad pomocí weglot pluginu.
-Version:3.0
+Version:3.1
 */
 * {
   font-family: Rubik, sans-serif;
 }
 [data-theme="light"] {
   --color-bg: #efefef;
-  --color-fg: #313131;
+  --color-fg: #1a1a1a;
   --link-color: #17657b;
   --hover-link: #004755;
   --archive_bg: #ededed;
@@ -17,13 +17,13 @@ Version:3.0
   --article_bg: #f9f9f9;
 }
 [data-theme="dark"] {
-  --color-bg: #313131;
+  --color-bg: #1a1a1a;
   --color-fg: #efefef;
   --link-color: #4da9b5;
   --hover-link: #2f8d99;
   --archive_bg: #004755;
   --buttons_bg: #4b4949;
-  --article_bg: #2c2c2c;
+  --article_bg: #333;
 }
 :root {
   --lghtest-blue: #4da9b5;
@@ -33,7 +33,7 @@ Version:3.0
   --middle-white: #efefef;
   --darker-white: #ddd;
   --darkest-white: #ccc;
-  --middle-black: #313131;
+  --middle-black: #333;
 }
 
 /*functions*/
@@ -302,7 +302,6 @@ main {
 .container form {
   padding: 30px;
   border-radius: 5px;
-  background: var(--article_bg);
 }
 .wpcf7-form {
   display: grid;
@@ -469,7 +468,6 @@ main {
   gap: 8px 0;
   padding: 0;
   margin: 0;
-  font-size: small;
   white-space: nowrap;
   color: var(--middle-white);
 }
@@ -492,7 +490,8 @@ main {
 .article-body p img {
   border-radius: 5px;
 }
-.article-body h3 {
+.article-body h3,
+.article-body h4 {
   color: var(--light-blue);
 }
 .container figure {
@@ -1116,6 +1115,22 @@ main {
 }
 
 /*footer*/
+.scroll-to-top-btn {
+  padding: 15px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--midle-blue);
+  color: white;
+  font-size: large;
+  border: none;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 .actual-footer {
   display: flex;
   align-items: center;

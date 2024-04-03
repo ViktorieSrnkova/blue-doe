@@ -104,3 +104,42 @@ function adjustFooterPosition() {
     document.querySelector(".actual-footer").classList.remove("fixed-footer");
   }
 }
+// Smooth scroll function
+document.addEventListener("DOMContentLoaded", function () {
+  const smoothScrollLinks = document.querySelectorAll(".smooth-scroll");
+
+  smoothScrollLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      const offsetTop = targetElement.offsetTop;
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // Show or hide the scroll-to-top button based on scroll position
+  window.addEventListener("scroll", function () {
+    if (window.scrollY < 800) {
+      scrollToTopBtn.style.display = "none";
+    } else {
+      scrollToTopBtn.style.display = "flex";
+    }
+  });
+
+  // Smooth scroll to top when the button is clicked
+  scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+});
