@@ -1,4 +1,4 @@
-        <button id="scrollToTopBtn" class="scroll-to-top-btn">↑</button>
+        <button id="scrollToTopBtn" class="scroll-to-top-btn"><i class="fa fa-angle-up"></i></button>
         </main>
         <footer class="actual-footer">
             <?php

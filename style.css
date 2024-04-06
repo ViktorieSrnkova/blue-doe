@@ -2,7 +2,7 @@
 Theme Name: Blue Doe
 Author: Viktorie Srnková
 Description: Tato šablona je ideální pro tvorbu blogu. Šablona má pro uživatele připravený světlý a tmavý režim a je plně škálovatelná a to včetně rozhraní pro telefon. Šablonu lze také použít pro kombinaci blogu a eshopu a pro toto použití je v dashboardu vytvořena nová role kombinující odběratele a zákazníka. Příspěvky obsahují sekce komentářů pro zpětnou vazbu uživatelů. Barvy se nedají měnit. Šablona umožňuje přihlašování přez rozhraní woocommerce a bez woocommerce se dá přihlásit přez rozhraní wodpressu. Titulky archivu,vyhledávání a stránky s příspěvky jsou ručně nastaveny aby se nezobrazoval titulek prvního příspěvku. Tyto titulky jsou připraveny i na překlad pomocí weglot pluginu.
-Version:3.1
+Version:3.8
 */
 * {
   font-family: Rubik, sans-serif;
@@ -233,6 +233,7 @@ main {
   padding: 5px;
   border: none;
   border-radius: 5px;
+  width: fit-content;
   background: var(--light-blue);
 }
 .page-title {
@@ -390,11 +391,19 @@ main {
 }
 
 /*aricle*/
+.wp-block-code,
+.card-info {
+  background-color: var(--color-bg);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--color-fg);
+}
+
 .single-top {
   display: grid;
   grid-template-columns: 1fr 0.8fr;
   margin: 0 auto 30px 0;
-  max-width: 840px;
+  max-height: 360px;
   width: 100%;
 }
 .img-fluid-single {
@@ -449,31 +458,109 @@ main {
 .single-comment i {
   margin-right: 3px;
 }
+.close {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.fa-close,
+.fa-list {
+  font-size: 20px;
+  color: var(--middle-white);
+  cursor: pointer;
+}
+.hidden-content-links {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  transform: translateX(70%);
+  display: flex;
+  transition: transform 0.3s ease-out;
+}
+.hidden-content-links:hover {
+  transform: translateY(-50%);
+  transform: translateX(0%);
+  transition: transform 0.3s ease-out;
+}
+.front {
+  height: 60px;
+  box-sizing: border-box;
+}
+.triangle1 {
+  width: 0;
+  height: 0;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid var(--lghtest-blue);
+  box-sizing: border-box;
+}
+.triangle2 {
+  width: 0;
+  margin-top: 0.8px;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-right: 30px solid var(--lghtest-blue);
+  box-sizing: border-box;
+}
+.rectangle {
+  background-color: var(--lghtest-blue);
+  height: 60px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+}
+
 .header-shortcuts {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translateX(0%);
   margin: 0 0 30px auto;
-  padding: 10px 10px 20px;
-  height: 100%;
-  max-width: 830px;
-  border-radius: 5px;
+  padding: 10px 10px 20px 50px;
+  height: fit-content;
+  max-height: 750px;
+  max-width: 200px;
+  border-radius: 5px 0 0 5px;
   background: var(--dark-blue);
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;
+  transition: transform 0.3s ease-in-out;
 }
-.header-shortcuts h2 {
+.header-shortcuts.hidden {
+  transform: translateY(-50%) translateX(100%);
+}
+.header-shortcuts h3 {
   color: var(--lghtest-blue);
   text-align: center;
+  margin: 0 0 20px -40px;
 }
 .heading-list {
   display: flex;
   flex-direction: column;
   gap: 8px 0;
   padding: 0;
-  margin: 0;
-  white-space: nowrap;
+  margin: 0 0 30px 0;
   color: var(--middle-white);
 }
 .heading-list li {
-  list-style-position: inside;
-  text-align: center;
+  text-align: left;
+  box-sizing: border-box;
+}
+.heading-list li::marker {
+  font-size: 20px;
+}
+.heading-list .level1 {
+  list-style-type: square;
+}
+.heading-list .level2 {
+  list-style-type: disc;
+  padding-left: 10px;
+}
+.heading-list .level3 {
+  list-style-type: circle;
+  padding-left: 20px;
 }
 .heading-list a {
   padding: 10px 0;
@@ -1116,20 +1203,24 @@ main {
 
 /*footer*/
 .scroll-to-top-btn {
-  padding: 15px;
-  aspect-ratio: 1/1;
+  height: 39px;
+  width: 39px;
   border-radius: 100%;
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
   background-color: var(--midle-blue);
-  color: white;
-  font-size: large;
   border: none;
   display: none;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+.fa-angle-up {
+  color: white;
+  padding: 15px;
+  font-size: 36px;
+  margin-bottom: 5px;
 }
 .actual-footer {
   display: flex;
@@ -1236,17 +1327,44 @@ main {
     flex-direction: column;
     margin-bottom: 0;
     width: 100%;
+    max-height: fit-content;
   }
   .img-fluid-single {
     border-radius: 5px 5px 0 0;
   }
-  .header-shortcuts {
-    padding: 5px 10px 20px;
-    border-radius: 0 0 5px 5px;
-  }
   .single-content-header {
     padding-bottom: 20px;
     border-radius: 0;
+  }
+  .close {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .fa-close,
+  .fa-list {
+    display: none;
+  }
+  .hidden-content-links {
+    display: none;
+  }
+  .header-shortcuts,
+  .header-shortcuts.hidden {
+    position: unset;
+    margin: 0 0 30px auto;
+    padding: 10px 10px 20px 50px;
+    height: fit-content;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 5px 5px;
+    background: var(--dark-blue);
+    text-align: center;
+    box-shadow: none;
+    box-sizing: border-box;
+    max-height: fit-content;
+    transform: translateX(0%) translateY(0%);
+
+    transition: transform 0s;
   }
 
   /*header*/
@@ -1266,8 +1384,12 @@ main {
   main {
     width: 100%;
   }
+  .top-line-content {
+    width: 95%;
+  }
   .content {
     overflow-x: hidden;
+    margin-top: 0;
   }
   /*contact*/
   .wpcf7-form-control {
@@ -1353,9 +1475,9 @@ main {
     display: none;
   }
   .hamburger-menu.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
     position: absolute;
     top: 60px;
     right: 0;
@@ -1365,6 +1487,7 @@ main {
     max-width: 80%;
     border-radius: 5px 0 0 5px;
     background: var(--dark-blue);
+    box-sizing: border-box;
   }
   .hamburger-icon {
     display: flex;
@@ -1379,6 +1502,7 @@ main {
     justify-content: start;
     align-items: start;
     width: 100%;
+    grid-column: 1 / span 2;
   }
   .bottom-line-content-burger {
     display: flex;
@@ -1407,8 +1531,15 @@ main {
   .bottom-line-anchors-burger a:hover {
     color: var(--lghtest-blue);
   }
+  .dark-mode-switch {
+    grid-column: 1 / span 1;
+  }
   .search-items-b {
     display: flex;
+    grid-column: 2 / span 1;
+  }
+  .wp-block-search__input {
+    width: 200px;
   }
   .fixed-footer {
     position: unset;
@@ -1417,7 +1548,9 @@ main {
   .actual-footer {
     display: flex;
     flex-direction: column;
-    height: 100px;
+    height: fit-content;
+    padding: 10px 0 10px 0;
+    gap: 10px;
     box-sizing: border-box;
   }
 }
