@@ -133,13 +133,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-function toggleHeaderShortcuts() {
-  var headerShortcuts = document.querySelector(".header-shortcuts");
-  if (headerShortcuts) {
-    if (headerShortcuts.classList.contains("hidden")) {
-      headerShortcuts.classList.remove("hidden");
-    } else {
-      headerShortcuts.classList.add("hidden");
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (!wpData.isLoggedIn) {
+    var commentForm = document.getElementById("commentform");
+    if (commentForm) {
+      var submitButton = commentForm.querySelector('input[type="submit"]');
+      var emailField = commentForm.querySelector('input[name="email"]');
+      var emailError = document.createElement("div");
+      emailError.setAttribute("id", "email-error");
+      emailError.style.color = "#4da9b5";
+      emailError.textContent = "Neplatný formát emailu";
+      emailError.style.display = "none";
+      emailField.parentNode.appendChild(emailError);
+
+      function isValidEmail(email) {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+
+      function validateEmail() {
+        if (!isValidEmail(emailField.value.trim())) {
+          emailError.style.display = "block";
+          submitButton.disabled = true;
+        } else {
+          emailError.style.display = "none";
+          submitButton.disabled = false;
+        }
+      }
+      emailField.addEventListener("input", validateEmail);
+      emailField.addEventListener("blur", validateEmail);
     }
   }
-}
+});

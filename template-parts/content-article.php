@@ -1,6 +1,5 @@
 <div class="container">
   <div class="single-top">
-    <img class="img-fluid-single" src='<?php the_post_thumbnail_url( 'thumbnail' );?>' alt="image" />
     <header class="single-content-header">
       <div class="single-meta">
         <span class="single-date">Zveřejněno: <?php the_date(); ?></span>
@@ -12,6 +11,7 @@
         <span class="single-comment"><a href="#comments"><i class="fa fa-comment"></i><?php  comments_number();?></a></span>
       </div>
     </header>
+    <img class="img-fluid-single" src='<?php the_post_thumbnail_url( 'thumbnail' );?>' alt="image" />
   </div>
   <div class="hidden-content-links">
     <div class="front">
@@ -19,12 +19,16 @@
       <div class="triangle2"></div>
     </div>
     <div class="rectangle">
-       <i class="fa fa-list" onclick="toggleHeaderShortcuts()"></i>
+      <div id="open-the-list">
+       <i class="fa fa-list" ></i>
+       </div>
     </div>
   </div>
   <div class="header-shortcuts">
     <div class="close">
-      <i class="fa fa-close" onclick="toggleHeaderShortcuts()"></i>
+      <div id="close-the-list">
+      <i class="fa fa-close"></i>
+      </div>
     </div>
     <h3>Obsah</h3>
     <ul class="heading-list">
@@ -54,3 +58,24 @@
     comments_template();
   ?>
 </div>
+<script>
+  var OpenIcon = document.getElementById("open-the-list");
+var CloseIcon = document.getElementById("close-the-list");
+OpenIcon.addEventListener("click", function () {
+  toggleHeaderShortcuts();
+});
+CloseIcon.addEventListener("click", function () {
+  console.log("yes i noticed you clicked the button");
+  toggleHeaderShortcuts();
+});
+function toggleHeaderShortcuts() {
+  var headerShortcuts = document.querySelector(".header-shortcuts");
+  if (headerShortcuts) {
+    if (headerShortcuts.classList.contains("hidden")) {
+      headerShortcuts.classList.remove("hidden");
+    } else {
+      headerShortcuts.classList.add("hidden");
+    }
+  }
+}
+  </script>

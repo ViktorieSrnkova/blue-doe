@@ -54,7 +54,8 @@ add_filter( 'wp_nav_menu_items', 'add_display_name_to_menu', 10, 2 );
 
     function bluedoe_register_scripts() {
         wp_enqueue_script( 'bluedoe-main', get_template_directory_uri() . "/assets/js/main.js", array(), '1.0', true );
-        wp_localize_script( 'bluedoe-main', 'wpData', array( 'baseUrl' => esc_url( home_url() ) ) );
+        $is_user_logged_in = is_user_logged_in();
+        wp_localize_script( 'bluedoe-main', 'wpData', array( 'baseUrl' => esc_url( home_url() ),'isLoggedIn' => $is_user_logged_in ) );
     }
 
     add_action( 'wp_enqueue_scripts', 'bluedoe_register_scripts' );

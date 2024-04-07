@@ -2,7 +2,7 @@
 Theme Name: Blue Doe
 Author: Viktorie Srnková
 Description: Tato šablona je ideální pro tvorbu blogu. Šablona má pro uživatele připravený světlý a tmavý režim a je plně škálovatelná a to včetně rozhraní pro telefon. Šablonu lze také použít pro kombinaci blogu a eshopu a pro toto použití je v dashboardu vytvořena nová role kombinující odběratele a zákazníka. Příspěvky obsahují sekce komentářů pro zpětnou vazbu uživatelů. Barvy se nedají měnit. Šablona umožňuje přihlašování přez rozhraní woocommerce a bez woocommerce se dá přihlásit přez rozhraní wodpressu. Titulky archivu,vyhledávání a stránky s příspěvky jsou ručně nastaveny aby se nezobrazoval titulek prvního příspěvku. Tyto titulky jsou připraveny i na překlad pomocí weglot pluginu.
-Version:3.8
+Version:5.7
 */
 * {
   font-family: Rubik, sans-serif;
@@ -240,7 +240,9 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  height: 40px;
+  height: fit-content;
+  padding: 0 10px 0 10px;
+  box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 0 4px 1px 0 var(--midle-blue);
 }
@@ -256,7 +258,7 @@ main {
 .sidebar {
   display: flex;
   width: 100%;
-  padding: 20px 20px 10px 5px;
+  padding: 10px;
   box-sizing: border-box;
 }
 .sidebar a {
@@ -401,20 +403,21 @@ main {
 
 .single-top {
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
+  grid-template-columns: 0.8fr 1fr;
   margin: 0 auto 30px 0;
   max-height: 360px;
+  box-sizing: border-box;
   width: 100%;
 }
 .img-fluid-single {
-  max-height: 420px;
+  max-height: 360px;
   width: 100%;
   max-width: 100%;
-  border-radius: 5px 0 0 5px;
-  object-fit: cover;
+  border-radius: 5px;
+  object-fit: contain;
 }
 .single-content-header {
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   background: var(--midle-blue);
 }
 .single-meta {
@@ -422,6 +425,7 @@ main {
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
+  max-height: 360px;
   width: 95%;
 }
 .single-date {
@@ -517,10 +521,11 @@ main {
   top: 50%;
   right: 0;
   transform: translateY(-50%) translateX(0%);
-  margin: 0 0 30px auto;
-  padding: 10px 10px 20px 50px;
+  margin: 0;
+  padding: 10px 10px 10px 50px;
   height: fit-content;
-  max-height: 750px;
+  max-height: 500px;
+  overflow-y: auto;
   max-width: 200px;
   border-radius: 5px 0 0 5px;
   background: var(--dark-blue);
@@ -854,7 +859,19 @@ main {
   cursor: pointer;
 }
 /*.woocommerce*/
-
+.return-to-page {
+  color: var(--lghtest-blue);
+}
+.return-to-page:hover {
+  cursor: pointer;
+  color: var(--color-fg);
+}
+.woocommerce-content {
+  margin-top: 20px;
+}
+.wc-block-product-categories {
+  margin-bottom: 0;
+}
 .posted_in a,
 .related,
 .tagged_as a {
@@ -1324,13 +1341,15 @@ main {
   }
   .single-top {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-bottom: 0;
     width: 100%;
     max-height: fit-content;
   }
   .img-fluid-single {
     border-radius: 5px 5px 0 0;
+    max-width: 80%;
+    margin: auto;
   }
   .single-content-header {
     padding-bottom: 20px;
@@ -1352,18 +1371,14 @@ main {
   .header-shortcuts.hidden {
     position: unset;
     margin: 0 0 30px auto;
-    padding: 10px 10px 20px 50px;
     height: fit-content;
     width: 100%;
     max-width: 100%;
     border-radius: 0 0 5px 5px;
-    background: var(--dark-blue);
-    text-align: center;
     box-shadow: none;
     box-sizing: border-box;
     max-height: fit-content;
     transform: translateX(0%) translateY(0%);
-
     transition: transform 0s;
   }
 
@@ -1476,7 +1491,7 @@ main {
   }
   .hamburger-menu.active {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.1fr auto;
     grid-gap: 10px;
     position: absolute;
     top: 60px;
@@ -1539,7 +1554,7 @@ main {
     grid-column: 2 / span 1;
   }
   .wp-block-search__input {
-    width: 200px;
+    width: 100%;
   }
   .fixed-footer {
     position: unset;
