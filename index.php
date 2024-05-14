@@ -9,7 +9,7 @@
                if (window.location.href.includes("en")) {
                 title.textContent = "Tutorials archive";
               } else {
-                title.textContent = "Archiv tutoriálů";
+                title.textContent = "Knihovna tutoriálů";
             }}
     });
 </script>

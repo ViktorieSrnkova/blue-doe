@@ -11,7 +11,10 @@ get_header();
         </thead>
         <tbody >
             <?php
-            $categories = get_categories();
+             $args = array(
+                'hide_empty' => 0
+            );
+            $categories = get_categories($args);
             foreach ($categories as $category) {
                 $category_count = $category->count;
                 echo '<tr>';

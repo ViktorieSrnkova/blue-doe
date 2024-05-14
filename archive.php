@@ -5,7 +5,7 @@ $current_term = get_queried_object();
 if ($current_term instanceof WP_Term) {
     $title = ucwords($current_term->name);
 } else {
-    $title = __("Archiv tutoriálů", "your-text-domain");
+    $title = __("Knihovna tutoriálů", "knihovna-tutorialu");
 }
 ?>
 
