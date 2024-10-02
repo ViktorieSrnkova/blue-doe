@@ -14,6 +14,8 @@
     });
 </script>
 <article class="content">
+  <div class="gray-bg">
+   <div class="new-posts">
     <?php
       if ( have_posts() ) {
           while ( have_posts() ) {
@@ -25,6 +27,8 @@
       }
       the_posts_pagination();
     ?>
+    </div>
+    </div>
 </article>
 
 <?php

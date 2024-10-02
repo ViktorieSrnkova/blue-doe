@@ -11,7 +11,7 @@
         <h1 class="heading404">404 Stránka nenalezena</h1>
         <p class="msg404">Zdá se, že vámi hledaná stránka neexistuje. Pro návrat na domovskou stránku stiskněte tlačítko níže.
         </p>
-        <a class="btn404" href="/wordpress">Domů</a>
+        <a class="btn404" href="/canarexreal">Domů</a>
       </article>
   </body>
 </html>
